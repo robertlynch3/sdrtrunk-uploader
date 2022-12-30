@@ -1,0 +1,11 @@
+version: '3.4'
+services:
+  sdrtrunk-uploader: 
+    image: robertlynch3/sdrtrunk-uploader:latest
+    ports:
+      - 8080:8080
+    environment:
+      - MIDDLEWARE_URL=http://127.0.0.1
+      - LISTENING_PORT=8080
+      - RDIO_SCANNER_URL=http://rdio-scanner:3000
+    restart: unless-stopped

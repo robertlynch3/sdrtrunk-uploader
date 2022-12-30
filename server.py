@@ -20,7 +20,7 @@ app.secret_key=''.join(random.choices(string.ascii_lowercase, k=85))
 
 # Determines if the directory exists or not
 
-MIDDLEWARE_URL=getenv('MIDDLEWARE_URL', 'http://127.0.0.1')
+MIDDLEWARE_URL=getenv('MIDDLEWARE_URL', 'http://127.0.0.1:8080')
 LISTENING_PORT=getenv('LISTENING_PORT', '8080')
 RDIO_SCANNER_URL=getenv('RDIO_SCANNER_URL', 'http://127.0.0.1:3000')
 CAPTURE_DIR=getenv('CAPTURE_DIR','/var/tmp/')
@@ -44,9 +44,9 @@ def index():
         with open(f'{CAPTURE_DIR}{tg}_{ts}.json', "a") as fp:
             fp.write(dumps(form, indent = 4))
         if 'enc' in request.form and request.form['enc'] == 'mp3':
-            return(f'0 {MIDDLEWARE_URL}:{LISTENING_PORT}/mp3upload/{systemId}/{tg}_{ts}')
+            return(f'0 {MIDDLEWARE_URL}/mp3upload/{systemId}/{tg}_{ts}')
         elif 'enc' in request.form and request.form['enc'] == 'm4a': 
-            return(f'0 {MIDDLEWARE_URL}:{LISTENING_PORT}/m4aupload/{systemId}/{tg}_{ts}')
+            return(f'0 {MIDDLEWARE_URL}/m4aupload/{systemId}/{tg}_{ts}')
         else: 
             return('1 - ERROR UNKNOWN UPLOAD')
     else:
