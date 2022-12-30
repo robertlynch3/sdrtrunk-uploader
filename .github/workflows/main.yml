@@ -9,6 +9,10 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+      - 
+        name: Set outputs
+        id: vars
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -26,4 +30,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: robertlynch3/sdrtrunk-uploader:latest
+          tags: robertlynch3/sdrtrunk-uploader:latest, robertlynch3/sdrtrunk-uploader:${{ steps.vars.outputs.sha_short }}
