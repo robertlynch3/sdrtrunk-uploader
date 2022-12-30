@@ -54,4 +54,6 @@ This middleware mimics the Broadcastify Calls API. To configure SDRTrunk, you sh
 
 
 # Issues
-Please report any issues via [GitHub issues](https://github.com/rml596/sdrtrunk-uploader/issues).
+Please report any issues via [GitHub issues](https://github.com/rml596/sdrtrunk-uploader/issues).<br>
+<br>
+Currently this only supports MP3 uploads, but it is fairly trivial to add other media uploads.
